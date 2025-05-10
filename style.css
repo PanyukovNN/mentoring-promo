@@ -278,7 +278,7 @@ input:checked + .slider:before {
 .roadmap-item {
     position: relative;
     padding-left: 3rem;
-    padding-bottom: 2.5rem;
+    padding-bottom: 1.5rem;
     animation: fadeIn 0.5s ease-in-out;
     transform-origin: left center;
 }
@@ -349,7 +349,6 @@ input:checked + .slider:before {
 .item-header {
     display: flex;
     align-items: center;
-    margin-bottom: 1rem;
     position: relative;
 }
 

@@ -5,6 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Менторинг Панюкова Николая</title>
     <link href="./style.css" rel="stylesheet">
+    <style>
+        .item-body {
+            max-height: 0;
+            overflow: hidden;
+            transition-property: max-height, opacity, margin-top;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 0.3s, 0.2s, 0.2s;
+            opacity: 0;
+            margin-top: 0;
+        }
+        .item-body.expanded {
+            max-height: 2000px;
+            opacity: 1;
+            margin-top: 1rem;
+            transition-duration: 0.8s, 0.6s, 0.6s;
+        }
+
+        #toggleAll {
+            background-color: var(--card-bg);
+            color: var(--text);
+            border: 1px solid var(--border);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all var(--transition-speed);
+            font-size: 0.9rem;
+        }
+
+        #toggleAll:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        #toggleAll:active {
+            transform: translateY(0);
+        }
+
+        [data-theme="dark"] #toggleAll {
+            background-color: var(--dark-bg);
+            color: var(--dark-text);
+            border-color: var(--dark-border);
+        }
+
+        [data-theme="dark"] #toggleAll:hover {
+            background-color: var(--dark-hover);
+            border-color: var(--dark-hover);
+            color: var(--dark-bg);
+        }
+    </style>
 </head>
 <body>
     <div class="code-decoration" style="top: 10%; left: 5%; font-size: 20px;"></div>
@@ -42,6 +91,10 @@
             <button class="filter-btn" data-filter="additional">Сопутствующие технологии 6ч.</button>
             <button class="filter-btn" data-filter="microservices">Микросервисы 5ч.</button>
             <button class="filter-btn" data-filter="interview">Собеседования 3ч.</button>
+        </div>
+        
+        <div style="display: flex; justify-content: flex-end; margin: 20px 0 0;">
+            <button id="toggleAll">Свернуть / Развернуть все</button>
         </div>
         
         <div class="timeline">
@@ -116,7 +169,7 @@
                     <div class="item-header">
                         <div class="item-number">4</div>
                         <h2 class="item-title">Системы сборки: Gradle, Maven</h2>
-                        <span class="category-badge badge-additional">Сопутствущие технологии</span>
+                        <span class="category-badge badge-additional">Сопутствующие технологии</span>
                     </div>
                     <div class="item-body">
                         <p>Вы изучите основные понятия Gradle и Maven, научитесь создавать и настраивать проекты с их помощью</p>
@@ -169,11 +222,13 @@
                 <div class="item-content">
                     <div class="item-header">
                         <div class="item-number">7</div>
-                        <h2 class="item-title">Spring Properties. Spring Web ч.1</h2>
+                        <h2 class="item-title">Spring Properties. Основы Web</h2>
                         <span class="category-badge badge-spring">Spring</span>
                     </div>
                     <div class="item-body">
-                        <p>На этом занятии вы изучите, как управлять настройками в Spring приложениях. Вы узнаете, как использовать Spring Property и профили для конфигурации приложений. Вы научитесь работать с HTTP протоколом и создавать RESTful сервисы с помощью Spring Web. В завершение занятия вы поймете, как использовать контроллеры и аннотации для обработки HTTP запросов.</p>
+                        <p>На этом занятии вы изучите, как управлять настройками в Spring приложениях, какие есть способы простановки настроек при запуске вашего приложения на сервере, как правильно использовать Spring профили</p>
+                        <br/>
+                        <p>Поймете как устроен HTTP протокол, узнаете что такое REST и RESTful. Научитесь использовать контроллеры и аннотации Spring Web для обработки HTTP запросов</p>
                     </div>
                 </div>
             </div>
@@ -183,11 +238,15 @@
                 <div class="item-content">
                     <div class="item-header">
                         <div class="item-number">8</div>
-                        <h2 class="item-title">Spring Web ч.2</h2>
+                        <h2 class="item-title">Spring WebMVC. Контроллеры и валидация</h2>
                         <span class="category-badge badge-spring">Spring</span>
                     </div>
                     <div class="item-body">
-                        <p>Это занятие продолжает изучение Spring Web, включая обработку HTTP запросов и ответы. Вы научитесь добавлять страницы ошибок, использовать фильтры для логирования и валидации запросов. Вы также изучите, как обрабатывать исключения и создавать кастомные валидации. В завершение занятия вы получите представление о различиях между аннотациями @Controller и @RestController.</p>
+                        <p>Вы узнаете каким образом происходит маппинг HTTP запросов на запросы контроллеров в Spring Web</p>
+                        <br/>
+                        <p>Научитесь валидировать входящие REST запросы, реализуете кастомную валидацию</p>
+                        <br/>
+                        <p>Поймете как правильно выполнять обработку исключений для слоя контроллеров</p>
                     </div>
                 </div>
             </div>
@@ -201,7 +260,13 @@
                         <span class="category-badge badge-spring">Spring</span>
                     </div>
                     <div class="item-body">
-                        <p>На этом занятии вы изучите Spring Data JPA и liquibase для работы с базами данных. Вы научитесь подключаться к базам данных, создавать схемы и управлять миграциями с помощью liquibase. Вы также изучите, как использовать JpaRepository для работы с сущностями и как применять аннотации для аудита данных. В завершение занятия вы поймете, как оптимизировать запросы и управлять транзакциями в Spring.</p>
+                        <p>На этом занятии вы узнаете что из себя представляет Spring Data JPA</p>
+                        <br/>
+                        <p>Научитесь подключаться к базам данных, создавать схемы и управлять миграциями с помощью liquibase</p>
+                        <br/>
+                        <p>Вы также изучите, как использовать JpaRepository для работы с сущностями, как создавать HQL и Native SQL запросы, как правильно добавлять поля для аудита данных</p>
+                        <br/>
+                        <p>В завершение узнаете как реализовать метод поиска по фильтру с произвольной фильтрацией, пагинацией и сортировкой</p>
                     </div>
                 </div>
             </div>
@@ -215,7 +280,11 @@
                         <span class="category-badge badge-spring">Spring</span>
                     </div>
                     <div class="item-body">
-                        <p>Это занятие посвящено Spring AOP и Spring Boot starters. Вы изучите, что такое сквозная функциональность и как использовать аспекты для управления поведением приложений. Вы научитесь создавать и настраивать Spring Boot стартеры для упрощения разработки. В завершение занятия вы получите представление о best practices по использованию аспектов и стартеров в Spring.</p>
+                        <p>Вы изучите, что такое сквозная функциональность, что из себя представляет AOP и какие виды аспектов бывают</p>
+                        <br/>
+                        <p>Узнаете о Best Practices в использовании аспектов</p>
+                        <br/>
+                        <p>Создадите свой Spring Boot стартер с аспектом внутри и добавите его в проект, в качестве библиотеки</p>
                     </div>
                 </div>
             </div>
@@ -229,7 +298,13 @@
                         <span class="category-badge badge-additional">Сопутствующие технологии</span>
                     </div>
                     <div class="item-body">
-                        <p>На этом занятии вы познакомитесь с Docker, Kubernetes и Openshift. Вы изучите основные понятия виртуализации и научитесь создавать и управлять контейнерами с помощью Docker. Вы также изучите, как использовать Kubernetes для оркестрации контейнеров и как развертывать приложения в Openshift. В завершение занятия вы получите представление о best practices по использованию этих технологий в реальных проектах.</p>
+                        <p>Вы изучите основные понятия виртуализации, поймете разницу между виртуальной машиной и контейнером</p>
+                        <br/>
+                        <p>Научитесь создавать и управлять контейнерами с помощью Docker и Docker Compose</p>
+                        <br/>
+                        <p>Узнаете, что из себя представляет Kubernetes, какие в нем есть компоненты. Поймете какими дополнительными инструментами предоставляет Openshift</p>
+                        <br/>
+                        <p>Развернете свой микросервис сначала в Docker, а затем в Kubernetes в нескольких экземплярах с балансировкой нагрузки</p>
                     </div>
                 </div>
             </div>
@@ -243,7 +318,13 @@
                         <span class="category-badge badge-additional">Сопутствующие технологии</span>
                     </div>
                     <div class="item-body">
-                        <p>Это занятие посвящено системе контроля версий Git. Вы изучите основные команды и научитесь управлять изменениями в коде. Вы также изучите, как разрешать конфликты, использовать ветвление и работать с платформами, такими как GitHub и GitLab. В завершение занятия вы получите представление о семантическом версионировании и GitFlow.</p>
+                        <p>Вы изучите основные практические сценарии работы с Git на реальном проекте</p>
+                        <br/>
+                        <p>Посмотрите как правильно разрешать конфликты, использовать ветвление, сравнивать состояния и откатывать изменения</p>
+                        <br/>
+                        <p>Узнаете какими операциями лучше пользоваться, а каких избегать, чтобы случайно не удалить код на проекте</p>
+                        <br/>
+                        <p>В завершение занятия вы получите представление о семантическом версионировании и ведении GitFlow на реальном проекте</p>
                     </div>
                 </div>
             </div>
@@ -257,7 +338,11 @@
                         <span class="category-badge badge-additional">Сопутствующие технологии</span>
                     </div>
                     <div class="item-body">
-                        <p>На этом занятии вы изучите, что такое CI/CD и как использовать его для автоматизации процессов разработки и развертывания. Вы научитесь настраивать Jenkins для автоматизации сборки и деплоя приложений. Вы также изучите, как создавать и управлять pipeline'ами для различных этапов разработки. В завершение занятия вы получите представление о best practices по использованию CI/CD в реальных проектах.</p>
+                        <p>Вы узнаете, что из себя представляет CI/CD и как происходит автоматизация процесса развертывания приложений на реальном проекте</p>
+                        <br/>
+                        <p>Научитесь разворачивать приложение на удаленном сервере</p>
+                        <br/>
+                        <p>Настроите Jenkins pipeline'ы для сборки и деплоя вашего приложения на удаленный сервер по git tag'у</p>
                     </div>
                 </div>
             </div>
@@ -271,7 +356,13 @@
                         <span class="category-badge badge-multithreading">Многопоточность</span>
                     </div>
                     <div class="item-body">
-                        <p>Это занятие посвящено основам многопоточности в Java. Вы изучите, как создавать и управлять потоками, а также как обеспечивать потокобезопасность в приложениях. Вы также изучите, как работает Java Memory Model и как использовать immutable объекты для повышения безопасности. В завершение занятия вы получите представление о best practices по работе с многопоточностью в Java.</p>
+                        <p>Вы изучите, как создавать потоки в Java и как ими управлять</p>
+                        <br/>
+                        <p>Узнаете, что такое Java Memory Model, поймете когда и как следует обеспечивать потокобезопасность</p>
+                        <br/>
+                        <p>Разберетесь как работает Garbage Collector и какие GC бывают</p>
+                        <br/>
+                        <p>В завершение занятия вы узнаете, как правильно создать immutable объекты</p>
                     </div>
                 </div>
             </div>
@@ -285,7 +376,17 @@
                         <span class="category-badge badge-multithreading">Многопоточность</span>
                     </div>
                     <div class="item-body">
-                        <p>На этом занятии вы изучите инструменты для работы с многопоточностью в Java. Вы научитесь использовать synchronized, volatile и другие механизмы для управления потоками. Вы также изучите, как использовать java.util.concurrent для создания потокобезопасных коллекций и управления потоками. В завершение занятия вы получите представление о best practices по использованию этих инструментов в реальных проектах.</p>
+                        <p>На этом занятии вы узнаете что такое состояние гонки и в каких случаях оно возникает</p>
+                        <br/>
+                        <p>Поймете принцип работы synchronized и volatile, когда их следует применять</p>
+                        <br/>
+                        <p>Узнаете, когда возникает deadlock и как его не допустить</p>
+                        <br/>
+                        <p>Изучите инструменты пакета java.util.concurrent: Atomic'и, CompletableFuture, синхронизаторы</p>
+                        <br/>
+                        <p>Узнаете какие есть потокобезопасные коллекции, как они устроены и в каких случаях их стоит применять</p>
+                        <br/>
+                        <p>В ходе занятия выполучите представление о лучших практиках по использованию указанных инструментов в реальных проектах</p>
                     </div>
                 </div>
             </div>
@@ -309,7 +410,7 @@
                 <div class="item-content">
                     <div class="item-header">
                         <div class="item-number">17</div>
-                        <h2 class="item-title">Spring WebMVC ч.3 Исходящие REST запросы</h2>
+                        <h2 class="item-title">Spring WebMVC. Исходящие REST запросы</h2>
                         <span class="category-badge badge-spring">Spring</span>
                     </div>
                     <div class="item-body">
@@ -585,6 +686,36 @@
                 header.appendChild(badge);
             });
         }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleButton = document.getElementById('toggleAll');
+            let isExpanded = false;
+
+            // Обработчик для кнопки "Свернуть/Развернуть все"
+            toggleButton.addEventListener('click', function() {
+                const itemBodies = document.querySelectorAll('.item-body');
+                isExpanded = !isExpanded;
+                
+                itemBodies.forEach(item => {
+                    if (isExpanded) {
+                        item.classList.add('expanded');
+                    } else {
+                        item.classList.remove('expanded');
+                    }
+                });
+            });
+
+            // Обработчик для кликов по roadmap-item
+            const roadmapItems = document.querySelectorAll('.roadmap-item');
+            roadmapItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const itemBody = this.querySelector('.item-body');
+                    if (itemBody) {
+                        itemBody.classList.toggle('expanded');
+                    }
+                });
+            });
+        });
     </script>
 </body>
 </html>
