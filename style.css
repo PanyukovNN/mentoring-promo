@@ -232,7 +232,7 @@ input:checked + .slider:before {
     justify-content: center;
     flex-wrap: wrap;
     gap: 0.5rem;
-    margin: 1rem 0 2rem;
+    margin: 1rem 0 0rem;
 }
 
 .filter-btn {
