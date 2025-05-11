@@ -13,16 +13,16 @@
     --fundamentals-bg: rgba(33, 150, 243, 0.1);
     --spring: #00c853;
     --spring-bg: rgba(0, 200, 83, 0.1);
-    --microservices: #9c27b0;
-    --microservices-bg: rgba(156, 39, 176, 0.1);
-    --additional: #ff9800;
-    --additional-bg: rgba(255, 152, 0, 0.1);
+    --microservices: #27b0ab;
+    --microservices-bg: rgba(39, 176, 171, 0.1);
+    --additional: #e1860f;
+    --additional-bg: rgba(225, 134, 15, 0.1);
     --multithreading: #0800ff;
     --multithreading-bg: rgba(8, 0, 255, 0.1);
     --db: #ff0062;
     --db-bg: rgba(255, 0, 98, 0.1);
-    --interview: #00ffff;
-    --interview-bg: rgba(0, 255, 255, 0.1);
+    --interview: #0d43dc;
+    --interview-bg: rgba(13, 67, 220, 0.1);
 
     --header-bg: #ffffff;
     --timeline-bg: #e1e4e8;
@@ -494,4 +494,40 @@ footer p {
         display: inline-block;
         margin-top: 0.5rem;
     }
+}
+
+.item-body {
+    max-height: 0;
+    overflow: hidden;
+    transition-property: max-height, opacity, margin-top;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 0.3s, 0.2s, 0.2s;
+    opacity: 0;
+    margin-top: 0;
+}
+.item-body.expanded {
+    max-height: 2000px;
+    opacity: 1;
+    margin-top: 1rem;
+    transition-duration: 0.8s, 0.6s, 0.6s;
+}
+
+#toggleAll {
+    background-color: var(--card-bg);
+    color: var(--text);
+    border: 1px solid var(--border);
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all var(--transition-speed);
+    font-size: 0.9rem;
+}
+
+#toggleAll:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+#toggleAll:active {
+    transform: translateY(0);
 }

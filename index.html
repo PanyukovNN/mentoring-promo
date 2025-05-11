@@ -5,55 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Менторинг Панюкова Николая</title>
     <link href="./style.css" rel="stylesheet">
-    <style>
-        .item-body {
-            max-height: 0;
-            overflow: hidden;
-            transition-property: max-height, opacity, margin-top;
-            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-            transition-duration: 0.3s, 0.2s, 0.2s;
-            opacity: 0;
-            margin-top: 0;
-        }
-        .item-body.expanded {
-            max-height: 2000px;
-            opacity: 1;
-            margin-top: 1rem;
-            transition-duration: 0.8s, 0.6s, 0.6s;
-        }
-
-        #toggleAll {
-            background-color: var(--card-bg);
-            color: var(--text);
-            border: 1px solid var(--border);
-            padding: 0.5rem 1rem;
-            border-radius: 50px;
-            cursor: pointer;
-            transition: all var(--transition-speed);
-            font-size: 0.9rem;
-        }
-
-        #toggleAll:hover {
-            transform: translateY(-2px);
-            box-shadow: var(--shadow);
-        }
-
-        #toggleAll:active {
-            transform: translateY(0);
-        }
-
-        [data-theme="dark"] #toggleAll {
-            background-color: var(--dark-bg);
-            color: var(--dark-text);
-            border-color: var(--dark-border);
-        }
-
-        [data-theme="dark"] #toggleAll:hover {
-            background-color: var(--dark-hover);
-            border-color: var(--dark-hover);
-            color: var(--dark-bg);
-        }
-    </style>
+    <link rel="icon" href="./favicon.svg" />
 </head>
 <body>
     <div class="code-decoration" style="top: 10%; left: 5%; font-size: 20px;"></div>
@@ -431,7 +383,7 @@
                         <br/>
                         <p>Посмотрите, как можно использовать interceptor'ы для логгирования исходящих запросов</p>
                         <br/>
-                        <p>Узнаете о лучших практиках написания REST клиентов не раельных проектах</p>
+                        <p>Узнаете о лучших практиках написания REST клиентов не реальных проектах</p>
                         <br/>
                         <p>Разберетесь, как тестировать REST клиенты с помощью wiremock</p>
                     </div>
@@ -444,10 +396,10 @@
                     <div class="item-header">
                         <div class="item-number">18</div>
                         <h2 class="item-title">Очереди сообщений. Kafka</h2>
-                        <span class="category-badge badge-additional">Сотпутствующие технологии</span>
+                        <span class="category-badge badge-additional">Сопутствующие технологии</span>
                     </div>
                     <div class="item-body">
-                        <p>Вы узнаете для чего нужны очереди сообщений, поймете почему большинство компаний отдают предпочтение Лafka</p>
+                        <p>Вы узнаете для чего нужны очереди сообщений, поймете почему большинство компаний отдают предпочтение Kafka</p>
                         <br/>
                         <p>Изучите основные понятия: broker, zookeeper, message, topic, partition, producer, consumer</p>
                         <br/>
@@ -471,7 +423,15 @@
                         <span class="category-badge badge-db">Базы данных</span>
                     </div>
                     <div class="item-body">
-                        <p>На этом занятии вы изучите основы Hibernate и как оптимизировать запросы в PostgreSQL. Вы научитесь использовать индексы для повышения производительности и как читать планы запросов. Вы также изучите, как управлять транзакциями и блокировками в базах данных. В завершение занятия вы получите представление о best practices по работе с Hibernate и PostgreSQL.</p>
+                        <p>На этом занятии вы узнаете как соотносятся понятия: JBDC, JPA, ORM, Hibernate и Spring Data</p>
+                        <br/>
+                        <p>Узнаете основные требования, которым должны соответствовать сущности в Hibernate и причины возникновения данных требований</p>
+                        <br/>
+                        <p>Вы научитесь использовать основные аннотации для сущностей, поймете почему зачастую применяется UUID в качестве первичного ключа, как использовать составной первичный ключ</p>
+                        <br/>
+                        <p>Освоите жизненный цикл Entity и как он связан с кешом первого уровня Hibernate</p>
+                        <br/>
+                        <p>Разберетесь в принципах работы кешей второго и третьего уровней</p>
                     </div>
                 </div>
             </div>
@@ -485,7 +445,15 @@
                         <span class="category-badge badge-db">Базы данных</span>
                     </div>
                     <div class="item-body">
-                        <p>На этом занятии вы изучите индексы и оптимизацию запросов в PostgreSQL. Вы научитесь создавать и использовать индексы для повышения производительности запросов. Вы также изучите, как анализировать планы запросов и оптимизировать их выполнение. В завершение занятия вы получите представление о best practices по работе с индексами и оптимизации запросов в PostgreSQL.</p>
+                        <p>На этом занятии вы узнаете всё необходимое об индексах в базах данных: для чего они нужны, какие издержки накладывают, какие виды бывают, что из себя представляют</p>
+                        <br/>
+                        <p>Научитесь правильно создавать и подбирать индексы под конкретную ситуацию для повышения производительности SQL запросов</p>
+                        <br/>
+                        <p>Научитесь смотреть и расшифровывать план запроса в PostgreSQL, благодаря чему сможете понять применился ли индекс и насколько эффективно</p>
+                        <br/>
+                        <p>Узнаете как создавать индекс не блокируя таблицу</p>
+                        <br/>
+                        <p>Поймете, как работают процессы vacuum и autovacuum</p>
                     </div>
                 </div>
             </div>
@@ -498,7 +466,15 @@
                         <span class="category-badge badge-db">Базы данных</span>
                     </div>
                     <div class="item-body">
-                        <p>Это занятие посвящено Hibernate и наследованию в базах данных. Вы изучите различные стратегии наследования и связи между таблицами. Вы также научитесь использовать аннотации для управления связями и оптимизации работы с базами данных. В завершение занятия вы получите представление о best practices по использованию Hibernate для работы с наследованием и связями в базах данных.</p>
+                        <p>Вы изучите стратегии наследования в JPA и как они реализуются в коде: Table Per Class, Single Table, Join Table</p>
+                        <br/>
+                        <p>Узнаете как правильно настраивать связи между таблицами: OneToOne, ManyToOne/OneToMany, ManyToMany</p>
+                        <br/>
+                        <p>Разберетесь как работают параметры fetchType и cascade</p>
+                        <br/>
+                        <p>Научитесь обнаруживать проблему N + 1, и узнаете как не допустить её с помощью таких подходов как EntityGraph и Join Fetch</p>
+                        <br/>
+                        <p>Освоите лучшие практики по наследованию и связям таблиц в реальных проектах</p>
                     </div>
                 </div>
             </div>
@@ -720,7 +696,7 @@
             const toggleButton = document.getElementById('toggleAll');
             let isExpanded = false;
 
-            // Обработчик для кнопки "Свернуть/Развернуть все"
+            // Обработчик для кнопки "Свернуть / Развернуть все"
             toggleButton.addEventListener('click', function() {
                 const itemBodies = document.querySelectorAll('.item-body');
                 isExpanded = !isExpanded;
