@@ -6,6 +6,30 @@
     <title>Менторинг Панюкова Николая</title>
     <link href="./style.css" rel="stylesheet">
     <link rel="icon" href="./favicon.svg" />
+    <style>
+        .item-header {
+            position: relative;
+            cursor: pointer;
+        }
+        
+        .arrow-icon {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 6px solid var(--text-color);
+            transition: transform 0.3s ease;
+        }
+        
+        .item-body.expanded ~ .item-header .arrow-icon,
+        .item-body.expanded + .item-header .arrow-icon {
+            transform: translateY(-50%) rotate(180deg);
+        }
+    </style>
 </head>
 <body>
     <div class="code-decoration" style="top: 10%; left: 5%; font-size: 20px;"></div>
@@ -57,6 +81,7 @@
                         <div class="item-number">1</div>
                         <h2 class="item-title">Установка ПО. Создание первого проекта</h2>
                         <span class="category-badge badge-fundamentals">Основы</span>
+                        <div class="arrow-icon"></div>
                     </div>
                     <div class="item-body">
                         <p>На этом занятии вы научитесь устанавливать необходимое программное обеспечение для разработки на Java</p>
@@ -75,6 +100,7 @@
                         <div class="item-number">2</div>
                         <h2 class="item-title">Основы Java</h2>
                         <span class="category-badge badge-fundamentals">Основы</span>
+                        <div class="arrow-icon"></div>
                     </div>
                     <div class="item-body">
                         <p>На занятии по основам Java мы посмотрим на:</p>
@@ -104,6 +130,7 @@
                         <div class="item-number">3</div>
                         <h2 class="item-title">Продвинутая Java</h2>
                         <span class="category-badge badge-fundamentals">Основы</span>
+                        <div class="arrow-icon"></div>
                     </div>
                     <div class="item-body">
                         <p>На этом занятии вы углубите свои знания в Java, изучая такие концепции, как функциональные интерфейсы, лямбды, Stream и Optional API</p>
@@ -648,8 +675,6 @@
                         <p>Изучите Big O нотацию и научитесь оценивать сложность алгоритмов</p>
                         <br/>
                         <p>Посмотрите пример решения задачи с LeetCode, для понимания того, как стоит вести себя на собеседовании</p>
-                        <br/>
-                        <p>Получите практические советы по подготовке</p>
                     </div>
                 </div>
             </div>
@@ -686,8 +711,6 @@
                         <p>Научитесь составлять сильное и эффективное резюме, избегая типичных ошибок</p>
                         <br/>
                         <p>Узнаете о способах повышения шансов на успешное трудоустройство</p>
-                        <br/>
-                        <p>Получите персональные рекомендации для вашего резюме</p>
                     </div>
                 </div>
             </div>
@@ -783,11 +806,12 @@
             // Обработчик для кликов по roadmap-item
             const roadmapItems = document.querySelectorAll('.roadmap-item');
             roadmapItems.forEach(item => {
-                item.addEventListener('click', function() {
-                    const itemBody = this.querySelector('.item-body');
-                    if (itemBody) {
-                        itemBody.classList.toggle('expanded');
-                    }
+                const header = item.querySelector('.item-header');
+                const body = item.querySelector('.item-body');
+                
+                header.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    body.classList.toggle('expanded');
                 });
             });
         });
